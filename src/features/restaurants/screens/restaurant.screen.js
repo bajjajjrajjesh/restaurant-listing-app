@@ -1,11 +1,8 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {
-  StatusBar,
-  SafeAreaView,
-} from "react-native";
+import { StatusBar, SafeAreaView } from "react-native";
 import { React } from "react";
 import { Searchbar } from "react-native-paper";
-import { ResturantInfo } from "../components/resturant-info.component";
+import { RestaurantInfo } from "../components/restaurant-info.component";
 import styled from "styled-components";
 
 const SafeArea = styled(SafeAreaView)`
@@ -13,25 +10,25 @@ const SafeArea = styled(SafeAreaView)`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px;`}
 `;
 
-const ResturantInfoView = styled.View`
+const RestaurantInfoView = styled.View`
   flex: 1;
 `;
 
 const SearchBar = styled.View`
   justify-content: center;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
-export const ResturantScreen = () => {
+export const RestaurantScreen = () => {
   return (
     <>
       <SafeArea>
         <SearchBar>
           <Searchbar />
         </SearchBar>
-        <ResturantInfoView>
-          <ResturantInfo />
-        </ResturantInfoView>
+        <RestaurantInfoView>
+          <RestaurantInfo />
+        </RestaurantInfoView>
       </SafeArea>
     </>
   );
