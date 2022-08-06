@@ -16,13 +16,31 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SettingsScreen } from "./src/features/settings/screen/settings.screen";
 import { MapScreen } from "./src/features/map/screen/map.screen";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
+
+const TabIcon = {
+  Restaurant: "restaurant",
+  Maps: "map",
+  Settings: "settings",
+};
+
+const screenOptions = ({ route }) => {
+  const iconName = TabIcon[route.name];
+  return {
+    headerShown: false,
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+    tabBarIcon: ({ color, size }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Restaurant" component={RestaurantScreen} />
       <Tab.Screen name="Maps" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
