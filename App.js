@@ -12,7 +12,23 @@ import {
   useFonts as useRoboto,
   Roboto_400Regular,
 } from "@expo-google-fonts/roboto";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { SettingsScreen } from "./src/features/settings/screen/settings.screen";
+import { MapScreen } from "./src/features/map/screen/map.screen";
+import { Ionicons } from '@expo/vector-icons';
 
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Restaurant" component={RestaurantScreen} />
+      <Tab.Screen name="Maps" component={MapScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
 export default function App() {
   const [latoLoaded] = useLato({
     Lato_400Regular,
@@ -33,7 +49,9 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantScreen />
+        <NavigationContainer>
+          <MyTabs />
+        </NavigationContainer>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
