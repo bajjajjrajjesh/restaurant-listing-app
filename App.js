@@ -38,7 +38,7 @@ const screenOptions = ({ route }) => {
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+const MyTabs = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Restaurant" component={RestaurantScreen} />
